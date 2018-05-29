@@ -39,7 +39,7 @@ if(exists("d1") && exists("d2"))
   
   ggplot(data=result, aes(year, total)) + facet_grid(.~factor(fips)) + 
     geom_line(lwd = 1.5, color="red") + geom_point(pch=4)
-  ggplot(data=result, aes(year, total)) + geom_line() + geom_point(data=result, shape = fips)
+
   
   ggsave("data/plot6.png")
 
