@@ -17,10 +17,6 @@ library(ggplot2)
 ## Q1 - Have total emissions from PM2.5 decreased in the United States from 1999 to 2008?   ----
 ## Using the base plotting system, make a plot showing the total PM2.5 emission from all sources 
 ## for each of the years 1999, 2002, 2005, and 2008.
-result <- d2 %>%
-  unite("Source","fips", "SCC", "type", sep="_" ) %>%
-  group_by(Source, year) %>%
-  summarise(total = sum(Emissions))
 
 result <- d2 %>%
   group_by(year) %>%
@@ -54,4 +50,3 @@ ggplot(data = result, aes(x=year, y= total)) +geom_point(pch=21)+
   facet_grid(.~type) + geom_line(col = "red") + xlab("Years") +ylab("Total PM2.5 Emission (ton)") + 
   ggtitle("Total PM2.5 in Baltimore City per Type across Years")
 
-qplot(data = result, x=year, y=total, facets = .~type, geom=c("point","line"), col="red")
